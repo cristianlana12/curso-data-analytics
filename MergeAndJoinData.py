@@ -20,7 +20,8 @@ df_final = pd.merge(
     left=ventas,
     right=clientes,
     on='id_cliente',  ##fk usada como referenciador
-    how='left'  ##left join nos quedamos con la tabla de la izquierda y las coincidencias entre izq y der
+    how='left',  ##left join nos quedamos con la tabla de la izquierda y las coincidencias entre izq y der
+    validate= 'm:1' ##Exigimos: Muchas ventas (m) por cada 1 cliente único
 )
 
 print(df_final)
@@ -33,4 +34,14 @@ completa con NaN los datos faltantes de la venta de c99
 0       101         C1      1500    Ana       Madrid
 1       102         C2      2300    Juan     Barcelona
 2       103        C99      900     NaN        NaN
+
+si usabamos inner, o sea coincidencias unicamente, la venta 103 se hubiera perdido
+'''
+
+
+'''
+Si hacemos un merge mal en un entorno de millones de datos, podemos causar un producto cartesiano, multiplicando la cantidad de filas
+y colapsando la memoria del servidor, puesto que panda corre todo en memoria 
+Para cubrirnos de esto usaremos el parametro VALIDATE   
+Si por error tu tabla de clientes tiene a "Ana" duplicada, el merge va a duplicar todas las ventas de Ana silenciosamente, arruinando tu reporte financiero.
 '''

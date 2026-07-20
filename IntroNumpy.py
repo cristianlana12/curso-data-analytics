@@ -17,3 +17,6 @@ calificacion = np.where(edades >=18, 'adulto', 'menor')
 
 print(edades)
 print(calificacion)
+print("\n")
+
+##

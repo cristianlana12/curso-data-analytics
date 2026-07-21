@@ -44,3 +44,12 @@ ax.legend(loc="upper right")
 plt.title= 'Ridge plot - data set iris'
 plt.show()
 
+
+#grafica de dispercion como ejemplo
+sns.set_style("whitegrid")
+palette = sns.color_palette("husl", 3)
+sns.scatterplot(x="sepal_length", y='sepal_width', hue="species", data=data, palette= palette)
+plt.xlabel = "long de sepalo"
+plt.ylabel = "ancho de sepalo"
+plt.title = "grafico personalizadp"
+plt.show()
